@@ -25,5 +25,22 @@ def generate_row(row,width):
         output = output[:-1] + " |"
 
 
-def generate_column(column):
-    pass
+def generate_column(column,width):
+    padding_space = width - len(column["content"])
+    padding = ""
+    if column["alignment"] == "left":
+        for _ in range(padding_space):
+            padding += " "
+        output = " " + column["content"] + padding + " |"
+    if column["alignment"] == "right":
+        for _ in range(padding_space):
+            padding += " "
+        output = " " + padding + column["content"] + " |"
+    if column["alignment"] == "center":
+        for _ in range(padding_space // 2):
+            padding += " "
+        output = " " + padding + column["content"] + padding + " |"
+        if padding_space % 2 != 0:
+            output = output[:-1] + " |"
+
+    return output
