@@ -1,6 +1,9 @@
 # Rows = [[Column(s)],...,[Column(s)]]
 # Column = {"content" : "", "alignment" : ""}
 
+def display_ui(ui_block):
+    for line in ui_block:
+        print(line)
 
 def generate_ui(rows):
     max_width = 0
@@ -23,6 +26,7 @@ def generate_row(row,width):
         output += generate_column(column,column_width)
     if width % len(row) != 0:
         output = output[:-1] + " |"
+    return output
 
 
 def generate_column(column,width):
@@ -42,5 +46,4 @@ def generate_column(column,width):
         output = " " + padding + column["content"] + padding + " |"
         if padding_space % 2 != 0:
             output = output[:-1] + " |"
-
     return output
