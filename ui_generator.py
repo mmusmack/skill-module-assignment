@@ -10,7 +10,7 @@ def generate_ui(rows):
     for row in rows:
         current_width = 0
         for column in row:
-                current_width = len(column["content"]) + 3
+                current_width += len(column["content"]) + 3
         if current_width > max_width:
             max_width = current_width
     
@@ -20,7 +20,7 @@ def generate_ui(rows):
     return ui_block
 
 def generate_row(row,width):
-    column_width = width // len(row)
+    column_width = (width // len(row)) - (len(row)*3)
     output = "|"
     for column in row:
         output += generate_column(column,column_width)
@@ -45,5 +45,5 @@ def generate_column(column,width):
             padding += " "
         output = " " + padding + column["content"] + padding + " |"
         if padding_space % 2 != 0:
-            output = output[:-1] + " |"
+            output = " " + output[:-1] + " |"
     return output
