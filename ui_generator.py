@@ -1,3 +1,7 @@
+# Rows = [[Column(s)],...,[Column(s)]]
+# Column = {"content" : "", "alignment" : ""}
+
+
 def generate_ui(rows):
     max_width = 0
     for row in rows:
